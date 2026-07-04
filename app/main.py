@@ -16,6 +16,10 @@ settings = get_settings()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("🚀 서버 시작 중... (env=%s)", settings.app_env)
+    if not settings.gemini_api_key:
+        raise RuntimeError("GEMINI_API_KEY가 설정되지 않았습니다. .env를 확인하세요.")
+    if not settings.ai_service_api_key:
+        raise RuntimeError("AI_SERVICE_API_KEY가 설정되지 않았습니다. .env를 확인하세요.")
     yield
     logger.info("🛑 서버 종료 중...")
 

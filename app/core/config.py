@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     app_env: str = "dev"
     gemini_api_key: str = ""
     gemini_model: str = "gemini-2.5-flash"
+    gemini_timeout_seconds: int = 30
+    ai_service_api_key: str = ""
 
 
 @lru_cache
